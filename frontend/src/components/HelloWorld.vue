@@ -1,4 +1,5 @@
 <template>
+  <div style="background-color:#90A4AE">
   <div class='bgimage'>
   <div class="wrapping bg">
   <v-container class="cover" justify-center fill-height>
@@ -12,6 +13,8 @@
  <v-icon color="white" class="arrow" >expand_more</v-icon>
 </v-flex>
 </div>
+</div>
+
 <div id="aboutSection" class="container fluid" flex-fill>
   <v-flex wrap class="white--text"><h1 class="display-2">About us</h1></v-flex>
   <div class="d-flex flex-wrap justify-content-center">
@@ -24,6 +27,7 @@
 </div>
 
 <v-parallax :src="require('@/assets/images/5.jpg')" jumbotron height="200"></v-parallax>
+
 <div id="eventsSection" class="container fluid" flex-fill >
    <v-flex class="white--text"><h1 class="display-2">Upcoming Events</h1></v-flex>
    <div class="d-flex scrollmenu align-items-center">
@@ -57,6 +61,48 @@
     <div id="rightarrow"><v-icon x-large>navigate_next</v-icon></div>
   </div>
  </div>
+
+ <v-parallax :src="require('@/assets/images/9.jpg')" jumbotron style="height:auto">
+      <v-layout column align-center justify-center>
+      <h1  class="headingF display-2">Featured Projects</h1>
+      <v-container fluid>
+        <v-flex xs12 class="eachFpro">
+          <v-card color="blue-grey darken-4" class="white--text" hover>
+            <v-container fluid grid-list-lg>
+              <v-layout row>
+                <v-flex xs7>
+                  <div>
+                    <div class="headline">Linit</div>
+                    <div class="container">'Sed ufiglaijlicbrl7b cvr271cgggggggggggggggggggggggggggggggggggggggg pariatur?</div>
+                  </div>
+                </v-flex>
+                <v-flex xs5>
+                  <img src="@/assets/images/1.jpg" class="img-fluid" style="height:30vh">
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card>
+        </v-flex>
+        <v-flex xs12 class="eachFpro">
+          <v-card color="blue-grey darken-4" class="white--text" hover>
+            <v-container fluid grid-list-lg>
+              <v-layout row>
+                <v-flex xs7>
+                  <div>
+                    <div class="headline">Linit</div>
+                    <div class="container">'Sed ufiglaijlicbrl7b cvr271cgggggggggggggggggggggggggggggggggggggggg pariatur?</div>
+                  </div>
+                </v-flex>
+                <v-flex xs5>
+                  <img src="@/assets/images/1.jpg" class="img-fluid" style="height:30vh">
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card>
+        </v-flex>
+      </v-container>
+    </v-layout>
+</v-parallax>
 </div>
 </template>
 <script>
@@ -71,7 +117,7 @@ export default {
       string:'Wanna be Badass',
       changed:false,
       counter:false,
-      aboutData:[{heading:'what we do',content:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,       consectetur,      adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',linktext:'this is linktext',link:'this is random link'},
+      aboutData:[{heading:'what we do',content:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,           consectetur,      adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',linktext:'this is linktext',link:'this is random link'},
                {heading:'what we do',content:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',linktext:'this is linktext',link:'this is random link'},
                  {heading:'what we do',content:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',linktext:'this is linktext',link:'this is random link'}],
       eventData:[{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals',link:'eventlink'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals',link:'eventlink'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals',link:'eventlink'}]
@@ -112,6 +158,23 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.headingF{
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 35px;
+  letter-spacing: -1.6px;
+  word-spacing: -1.2px;
+  color: #E1F5FE;
+  font-weight: 700;
+  width:auto;
+  margin:10px;
+}
+.eachFpro{
+  opacity:0.9;
+  margin: 10px;
+}
+.eachFpro:hover{
+    box-shadow: 6px 6px 50px 1px #81D4FA;
+}
 .project {
 	width: 100%;
 	height: inherit;
@@ -172,11 +235,9 @@ export default {
 }
 
 #eventsSection{
-  background-color:#90A4AE;
-  position: relative;
   z-index: -1;
   padding-top:50px;
-
+  padding-bottom:50px
 }
 div.scrollmenu {
     background-color:#FFF;
@@ -234,7 +295,6 @@ g{ display: block;}
     }
 .arrow{
   animation: bounce 1s cubic-bezier(.5,0.05,1,.5);
-
    animation-direction: alternate;
    animation-iteration-count: infinite;
    border-radius: 15px;
@@ -292,7 +352,5 @@ g{ display: block;}
 
 }
 #aboutSection{
-
-  background-color:#90A4AE;
 }
 </style>

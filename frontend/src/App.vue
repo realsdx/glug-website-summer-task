@@ -1,14 +1,17 @@
 <template>
   <div id="app"   >
     <v-app  >
-       <div >
-        <main >
+        <main>
           <Pageheader/>
-          <v-content >
-          <router-view/>
+          <v-content class="cn">
+
+          <router-view></router-view>
+
           </v-content>
+
+          <Pagefooter/>
+
       </main>
-      </div>
   </v-app>
 </div>
 </template>
@@ -16,9 +19,10 @@
 <script>
 
 import Pageheader from './components/Header'
+import Pagefooter from './components/Footer'
 export default {
   name: 'App',
-  components:{ Pageheader},
+  components:{ Pageheader,Pagefooter},
 }
 </script>
 <style lang="scss">
@@ -33,9 +37,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-.navv{
-  z-index: -999;
 }
 
 </style>

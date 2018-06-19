@@ -8,6 +8,7 @@ import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
 import {sync} from 'vuex-router-sync'
 
+
 sync(store,router)
 // index.js or main.js
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
