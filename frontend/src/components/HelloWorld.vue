@@ -10,18 +10,16 @@
   </v-flex>
   </v-container>
   <v-flex class="anWrapping">
- <v-icon color="white" class="arrow" >expand_more</v-icon>
+ <span @click="$vuetify.goTo(target, options)"><v-icon color="white" class="arrow" >expand_more</v-icon></span>
 </v-flex>
 </div>
 </div>
 
 <div id="aboutSection" class="container fluid" flex-fill>
-  <v-flex wrap class="white--text"><h1 class="display-2">About us</h1></v-flex>
-  <div class="d-flex flex-wrap justify-content-center">
+  <v-flex wrap class="white--text"><h1 class="headingF display-2">About us</h1></v-flex>
+  <div class="d-flex flex-wrap justify-content-center abdata">
    <div class="eachAboutsection "  v-for="data in aboutData" v-show="counter" v-scroll="hellyeah">
-     <h1 class="headline">{{data.heading}}</h1>
-     <hr>
-     <div>{{data.content}}</div>
+     <div v-html="data.content"></div>
    </div>
  </div>
 </div>
@@ -29,10 +27,10 @@
 <v-parallax :src="require('@/assets/images/5.jpg')" jumbotron height="200"></v-parallax>
 
 <div id="eventsSection" class="container fluid" flex-fill >
-   <v-flex class="white--text"><h1 class="display-2">Upcoming Events</h1></v-flex>
-   <div class="d-flex scrollmenu align-items-center">
-   <div id="leftarrow"><v-icon x-large>navigate_before</v-icon></div>
-    <div class="scroller ">
+   <v-flex class="white--text"><h1 class="headingF display-2">Upcoming Events</h1></v-flex>
+   <div class="d-flex  align-items-center">
+   <span  fixed id="leftarrow" @click="scrollLeft"><v-icon x-large>navigate_before</v-icon></span>
+    <div class="scroller scrollmenu " ref="myDiv">
       <div class="eachAboutsectionss" v-for="data in eventData" v-show="counter" v-scroll="hellyeah">
 
                 <div class=" project project-2 wow animated animated3 fadeInLeft">
@@ -45,56 +43,28 @@
                 </div>
                </div>
       </div>
-      <div class="eachAboutsectionss" v-for="data in eventData" v-show="counter" v-scroll="hellyeah">
-
-                <div class=" project project-2 wow animated animated3 fadeInLeft">
-            	   <div class="project-hover">
-                	<h2>{{data.title}}</h2>
-                    <hr />
-                    <p><v-icon color="white">alarm</v-icon>{{data.time}}<br><v-icon color="white">date_range</v-icon>{{data.date}}</p>
-
-                    <a href="#">See Project</a>
-                </div>
-               </div>
       </div>
-      </div>
-    <div id="rightarrow"><v-icon x-large>navigate_next</v-icon></div>
+    <span id="rightarrow" fixed  @click="scrollRight"><v-icon x-large>navigate_next</v-icon></span>
   </div>
  </div>
 
- <v-parallax :src="require('@/assets/images/9.jpg')" jumbotron style="height:auto">
-      <v-layout column align-center justify-center>
+ <v-parallax :src="require('@/assets/images/9.jpg')" jumbotron style="height:auto;min-height:100vh">
+      <v-layout column align-center align-items-center>
       <h1  class="headingF display-2">Featured Projects</h1>
-      <v-container fluid>
-        <v-flex xs12 class="eachFpro">
+      <v-container fluid >
+        <v-flex xs12 lg6 class="eachFpro" v-for="data in FprojectsData">
           <v-card color="blue-grey darken-4" class="white--text" hover>
             <v-container fluid grid-list-lg>
               <v-layout row>
                 <v-flex xs7>
                   <div>
-                    <div class="headline">Linit</div>
-                    <div class="container">'Sed ufiglaijlicbrl7b cvr271cgggggggggggggggggggggggggggggggggggggggg pariatur?</div>
+                    <div class="headline">{{data.title}}</div>
+                    <div class="container">{{data.description}}</div>
+                    <a :href="data.gitlink">git</a>
                   </div>
                 </v-flex>
                 <v-flex xs5>
-                  <img src="@/assets/images/1.jpg" class="img-fluid" style="height:30vh">
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-card>
-        </v-flex>
-        <v-flex xs12 class="eachFpro">
-          <v-card color="blue-grey darken-4" class="white--text" hover>
-            <v-container fluid grid-list-lg>
-              <v-layout row>
-                <v-flex xs7>
-                  <div>
-                    <div class="headline">Linit</div>
-                    <div class="container">'Sed ufiglaijlicbrl7b cvr271cgggggggggggggggggggggggggggggggggggggggg pariatur?</div>
-                  </div>
-                </v-flex>
-                <v-flex xs5>
-                  <img src="@/assets/images/1.jpg" class="img-fluid" style="height:30vh">
+                  <img :src="data.image" class="img-fluid" style="height:30vh">
                 </v-flex>
               </v-layout>
             </v-container>
@@ -106,7 +76,7 @@
 </div>
 </template>
 <script>
-
+import Home from '../services/Home'
 export default {
   name: 'HelloWorld',
   data () {
@@ -117,10 +87,15 @@ export default {
       string:'Wanna be Badass',
       changed:false,
       counter:false,
-      aboutData:[{heading:'what we do',content:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,           consectetur,      adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',linktext:'this is linktext',link:'this is random link'},
-               {heading:'what we do',content:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',linktext:'this is linktext',link:'this is random link'},
-                 {heading:'what we do',content:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',linktext:'this is linktext',link:'this is random link'}],
-      eventData:[{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals',link:'eventlink'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals',link:'eventlink'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals',link:'eventlink'}]
+      duration: 300,
+       offset: 0,
+       easing: 'easeInOutCubic',
+      aboutData:[{content: "<h2 style=\"font-style:italic\">HEllo</h2>\r\n\r\n<p>DEar all tqqqqqq qqqq  q qq qqqqqqq  qqqqqqq qqqqqqqq  qqqqqqqq qqqqqqqqqqqqqqq qqqqqqqq qqq qqq qqq qqqqqqqqqqqq qqqqqqqqqqq qqqq qqqqqqqqqqqqqqq qqqqqqq qqqqqqqqqqqqq qqqqq qqqqqqq qqqq qqqqqq qqqq qqr to the agm tqqqqqq qqqq  q qq qqqqqqq  qqqqqqq qqqqqqqq  qqqqqqqq qqqqqqqqqqqqqqq qqqqqqqq qqq qqq qqq qqqqqqqqqqqq qqqqqqqqqqq qqqq qqqqqqqqqqqqqqq qqqqqqq qqqqqqqqqqqqq qqqqq qqqqqqq qqqq qqqqqq qqqq qqr to the   agmto the agme</p>"},
+                 {content: "<h2 style=\"font-style:italic\">HEllo</h2>\r\n\r\n<p>DEar all matter matteqq qqq qqq qqqqqqq qqqqqqqq qqqqqq qqqqqqqqq qqqq qqq qq qqq qqqqqq qqqq  q qq qqqqqqq  qqqqqqq qqqqqqqq  qqqqqqqq qqqqqqqqqqqqqqq qqqqqqqq qqq qqq qqq qqqqqqqqqqqq qqqqqqqqqqq qqqq qqqqqqqqqqqqqqq qqqqqqq qqqqqqqqqqqqq qqqqqqqqqqqqqqqqqqqqqqqqqqqqr to the agme</p>"},
+                 {content: "<h2 style=\"font-style:italic\">HEllo</h2>\r\n\r\n<p>DEar all matter tqqqqqq qqqq  q qq qqqqqqq  qqqqqqq qqqqqqqq  qqqqqqqq qqqqqqqqqqqqqqq qqqqqqqq qqq qqq qqq qqqqqqqqqqqq qqqqqqqqqqq qqqq qqqqqqqqqqqqqqq qqqqqqq qqqqqqqqqqqqq qqqqq qqqqqqq qqqq qqqqqq qqqq qqr to the agme</p>"},
+               ],
+      eventData:[{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals',id:'1'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals',}],
+      FprojectsData:[{title:'Linit',description:'its a magazine',gitlink:'#',image:'https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2017/12/Screen-Shot-2017-12-04-at-10.39.57-796x447.png',id:'1'},{title:'Linit',description:'its a magazine',gitlink:'#',image:'https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2017/12/Screen-Shot-2017-12-04-at-10.39.57-796x447.png',id:'1'}]
     }
   },
   methods: {
@@ -139,20 +114,45 @@ export default {
      if(count>10)
     this.counter= true;
      else this.counter=false;
-   }
+   },
+   scrollLeft(){
+    this.$refs.myDiv.scrollLeft -=30;
+  },
+  scrollRight(){
+   this.$refs.myDiv.scrollLeft +=30;
+  }
+
 
  },
- mounted() {
+ async mounted() {
    this.changed=true;
-    this.appendWords(); // invoke function when ready
-
+   /*try{ const data = (await Home.getHome()).data  ;
+   this.array = data.displaymesages;
+   this.aboutData = data.aboutUsData;
+   this.eventData = data.Upcomingevents;
+   this.FprojectsData= data.Fprojects;}
+   catch(e){
+   this.$router.push({name:'errorPage'});
+ }*/
+   this.appendWords();
   },
   computed: {
       avatarSize () {
         return `${this.slider}px`
+      },
+    target () {
+      const value = '#aboutSection'
+      if (!isNaN(value)) return Number(value)
+      else return value
+    },
+    options () {
+      return {
+        duration: this.duration,
+        offset: this.offset,
+        easing: this.easing
       }
+    },
     }
-
 };
 </script>
 
@@ -168,12 +168,18 @@ export default {
   width:auto;
   margin:10px;
 }
+
+#leftarrow,#rightarrow :hover{
+  cursor: pointer;
+}
 .eachFpro{
   opacity:0.9;
   margin: 10px;
+
 }
 .eachFpro:hover{
     box-shadow: 6px 6px 50px 1px #81D4FA;
+
 }
 .project {
 	width: 100%;
@@ -245,23 +251,25 @@ div.scrollmenu {
     position: relative;
     margin: 0;
     margin-top: 50px;
-    height: 400px;
+    height: 60vh;
 
 }
 
 .scroller{
   background-color:#FFF;
 min-width: 80%;
-height:inherit;
+height:60vh;
 display: flex;
 overflow-x: auto;
 overflow-y: hidden;
+::-webkit-scrollbar
+    width: 0px
 }
 
 div.scroller .eachAboutsectionss {
   margin: 2px;
-  min-width:300px;
-  height:inherit;
+  min-width:250px;
+  height:60vh;
 }
 
 .cover{
@@ -348,9 +356,14 @@ g{ display: block;}
   to{transform: scale(1);}
 }
 
-.eachAboutsection:hover{
-
+@keyframes slanty{
+  from{ transform: translateX(-100);}
+  to{transform: translateX(0);}
 }
 #aboutSection{
+  padding: 10vh;
+}
+.abdata{
+  margin-top: 5vh;
 }
 </style>
