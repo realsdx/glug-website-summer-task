@@ -10,16 +10,16 @@
      <v-btn small class="linked" flat dark @click="navigateTo({name:'DisplayEvents'})" >
       Events
     </v-btn>
-     <v-btn small class="linked" flat dark @click="navigateTo({name:'DisplayEvents'})" >
+     <v-btn small class="linked" flat dark @click="navigateTo({name:'Members'})" >
       Members
       </v-btn>
-      <v-btn small class="linked" flat dark @click="navigateTo({name:'DisplayEvents'})" >
+      <v-btn small class="linked" flat dark @click="navigateTo({name:'root'})" >
        Activities
        </v-btn>
-       <v-btn  small class="linked" flat dark @click="navigateTo({name:'DisplayEvents'})" >
+       <v-btn  small class="linked" flat dark @click="navigateTo({name:'root'})" >
         Blog
       </v-btn>
-      <v-btn small class="linked" flat dark @click="navigateTo({name:'DisplayEvents'})" >
+      <v-btn small class="linked" flat dark @click="navigateTo({name:'root'})" >
        Contact us
      </v-btn>
    </v-toolbar-items>

@@ -7,7 +7,9 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
 import {sync} from 'vuex-router-sync'
+var SocialSharing = require('vue-social-sharing');
 
+Vue.use(SocialSharing);
 
 sync(store,router)
 // index.js or main.js

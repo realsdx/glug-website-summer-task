@@ -33,12 +33,11 @@
     <div class="scroller scrollmenu " ref="myDiv">
       <div class="eachAboutsectionss" v-for="data in eventData" v-show="counter" v-scroll="hellyeah">
 
-                <div class=" project project-2 wow animated animated3 fadeInLeft">
+                <div class=" project project-2 ">
             	   <div class="project-hover">
                 	<h2>{{data.title}}</h2>
                     <hr />
                     <p><v-icon color="white">alarm</v-icon>{{data.time}}<br><v-icon color="white">date_range</v-icon>{{data.date}}</p>
-
                     <a href="#">See Project</a>
                 </div>
                </div>
@@ -114,10 +113,10 @@ export default {
      if(count>10)
     this.counter= true;
      else this.counter=false;
-   },
+    },
    scrollLeft(){
     this.$refs.myDiv.scrollLeft -=30;
-  },
+    },
   scrollRight(){
    this.$refs.myDiv.scrollLeft +=30;
   }
