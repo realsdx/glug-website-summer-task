@@ -1,5 +1,5 @@
 <template lang="html">
-  <v-flex  v-bind:class="{ navigater:isActive&&this.$route.path=='/' }" v-scroll="onScroll" >
+  <v-flex  v-bind:class="{ navigater:this.$route.path=='/'&&isActive}" v-scroll="onScroll" >
     <v-toolbar color="blue-grey darken-4" dark fixed>
 <v-toolbar-title><span class="home" @click="navigateTo({name:'root'})"><img src="../assets/images/logo.png" alt="" class="logo rounded-circle img-fluid"/></span></v-toolbar-title>
    <v-spacer></v-spacer>
@@ -13,13 +13,13 @@
      <v-btn small class="linked" flat dark @click="navigateTo({name:'Members'})" >
       Members
       </v-btn>
-      <v-btn small class="linked" flat dark @click="navigateTo({name:'root'})" >
+      <v-btn small class="linked" flat dark  >
        Activities
        </v-btn>
-       <v-btn  small class="linked" flat dark @click="navigateTo({name:'root'})" >
+       <v-btn  small class="linked" flat dark  >
         Blog
       </v-btn>
-      <v-btn small class="linked" flat dark @click="navigateTo({name:'root'})" >
+      <v-btn small class="linked" flat dark @click="navigateTo({name:'contact-us'})" >
        Contact us
      </v-btn>
    </v-toolbar-items>

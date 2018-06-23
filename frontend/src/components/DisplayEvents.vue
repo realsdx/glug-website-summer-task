@@ -7,12 +7,14 @@
 <div class="cards d-flex flex-wrap">
   <div class="Eachcard" v-for="data in events">
 
-      <img :src='require("@/assets/images/8.jpg")' class="cardImage"/>
+      <img :src="data.event_image" class="cardImage"/>
       <h3 >{{data.title}}</h3>
-      <div id="ribbon" ><i class="far fa-calendar-alt fa-lg" ></i><span> {{data.date}}</span></div>
-      <div id="ribbon"><i class="fas fa-clock fa-lg"></i><span> {{data.time}}</span></div>
-       <p >{{data.description}}</p>
-       <div ><social-sharing :url="data.EventLink"
+      <div id="ribbon" ><i class="far fa-calendar-alt fa-lg" ></i><span >{{new Date(data.event_timing).toLocaleDateString()}}</span></div>
+      <div id="ribbon"><i class="fas fa-clock fa-lg"></i><span>{{new Date(data.event_timing).toLocaleTimeString()}}</span></div>
+       <p v-html="data.description"></p>
+       <div v-show="data.venue">Venue:{{data.venue}}</div>
+       <div v-show="data.url">Visit:{{data.url}}</div>
+       <div ><social-sharing :url="data.url||$route.path"
                      :title="data.title"
                      :description="data.description"
                      :quote="data.title"
@@ -50,25 +52,17 @@ export default {
   data(){
     return{
       visible:false,
-      events:[{title:'freemex',description:'The stock market can be really confusing. For some it’s just sheer luck and guesswork while for some it’s some excellent observational skills and strategic manipulation. Well, the number in the end is all what matters. What you earn out of it is what leaves a trail.GLUG gives you the opportunity to figure out your way. Well, come rock your minds as we present a miniature and fun version of the stock market itself! Come experience Freemex.',
-               date:'24/12/12',time:'2 AM',EventLink:'https://www.google.com/'},
-               {title:'freemex',description:'The stock market can be really confusing. For some it’s just sheer luck and guesswork while for some it’s some excellent observational skills and strategic manipulation. Well, the number in the end is all what matters. What you earn out of it is what leaves a trail.GLUG gives you the opportunity to figure out your way. Well, come rock your minds as we present a miniature and fun version of the stock market itself! Come experience Freemex.',
-                date:'24/12/12',time:'2 AM',EventLink:'https://www.google.com/'},
-                {title:'freemex',description:'The stock market can be really confusing. For some it’s just sheer luck and guesswork while for some it’s some excellent observational skills and strategic manipulation. Well, the number in the end is all what matters. What you earn out of it is what leaves a trail.GLUG gives you the opportunity to figure out your way. Well, come rock your minds as we present a miniature and fun version of the stock market itself! Come experience Freemex.',
-                   date:'24/12/12',time:'2 AM',EventLink:'https://www.google.com/'},
-                 {title:'freemex',description:'The stock market can be really confusing. For some it’s just sheer luck and guesswork while for some it’s some excellent observational skills and strategic manipulation. Well, the number in the end is all what matters. What you earn out of it is what leaves a trail.GLUG gives you the opportunity to figure out your way. Well, come rock your minds as we present a miniature and fun version of the stock market itself! Come experience Freemex.',
-                    date:'24/12/12',time:'2 AM',EventLink:'https://www.google.com/'},
-                {title:'freemex',description:'The stock market can be really confusing. For some it’s just sheer luck and guesswork while for some it’s some excellent observational skills and strategic manipulation. Well, the number in the end is all what matters. What you earn out of it is what leaves a trail.GLUG gives you the opportunity to figure out your way. Well, come rock your minds as we present a miniature and fun version of the stock market itself! Come experience Freemex.',
-                  date:'24/12/12',time:'2 AM',EventLink:'https://www.google.com/'}]
+      events:[]
     }
   },
   async mounted() {
-    /*try{ const data = (await Events.getEvents()).data  ;
-    this.events = data.events;}
+    try{this.events = (await Events.getEvents()).data  ;
+     }
     catch(e){
     this.$router.push({name:'errorPage'});
-  }*/
+  }
    },
+
 
 
 
@@ -100,12 +94,11 @@ hr{
 .Eachcard{
   height:auto;
   background-color:white;
-  width: 280px;
+  max-width: 400px;
   -webkit-box-shadow: -3px 16px 15px 2px #01181D;
-box-shadow: -3px 16px 15px 2px #01181D;
-
+  box-shadow: -3px 16px 15px 2px #01181D;
   border-radius:10px;
-margin: 20px;
+  margin: 20px;
 }
 
 .cardImage{

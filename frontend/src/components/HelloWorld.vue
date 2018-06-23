@@ -31,14 +31,16 @@
    <div class="d-flex  align-items-center">
    <span  fixed id="leftarrow" @click="scrollLeft"><v-icon x-large>navigate_before</v-icon></span>
     <div class="scroller scrollmenu " ref="myDiv">
-      <div class="eachAboutsectionss" v-for="data in eventData" v-show="counter" v-scroll="hellyeah">
-
-                <div class=" project project-2 ">
+      <div class="eachEvent" v-for="data in eventData" v-show="counter" v-scroll="hellyeah" v-if="(new Date(data.event_timing)>new Date())">
+          <div class=" project project-2" :style="{ backgroundImage: `url('${data.event_image}')` }">
             	   <div class="project-hover">
                 	<h2>{{data.title}}</h2>
                     <hr />
-                    <p><v-icon color="white">alarm</v-icon>{{data.time}}<br><v-icon color="white">date_range</v-icon>{{data.date}}</p>
-                    <a href="#">See Project</a>
+                    <p><v-icon color="white">alarm</v-icon>{{new Date(data.event_timing).toLocaleTimeString()}}<br>
+                      <v-icon color="white">date_range</v-icon>{{new Date(data.event_timing).toLocaleDateString()}}</p>
+                      <div v-show="data.venue">Venue:{{data.venue}}</div>
+                      <div v-show="data.url">Visit:{{data.url}}</div>
+                       <a href="#">See Project</a>
                 </div>
                </div>
       </div>
@@ -76,6 +78,7 @@
 </template>
 <script>
 import Home from '../services/Home'
+import Events from '../services/Events'
 export default {
   name: 'HelloWorld',
   data () {
@@ -89,11 +92,8 @@ export default {
       duration: 300,
        offset: 0,
        easing: 'easeInOutCubic',
-      aboutData:[{content: "<h2 style=\"font-style:italic\">HEllo</h2>\r\n\r\n<p>DEar all tqqqqqq qqqq  q qq qqqqqqq  qqqqqqq qqqqqqqq  qqqqqqqq qqqqqqqqqqqqqqq qqqqqqqq qqq qqq qqq qqqqqqqqqqqq qqqqqqqqqqq qqqq qqqqqqqqqqqqqqq qqqqqqq qqqqqqqqqqqqq qqqqq qqqqqqq qqqq qqqqqq qqqq qqr to the agm tqqqqqq qqqq  q qq qqqqqqq  qqqqqqq qqqqqqqq  qqqqqqqq qqqqqqqqqqqqqqq qqqqqqqq qqq qqq qqq qqqqqqqqqqqq qqqqqqqqqqq qqqq qqqqqqqqqqqqqqq qqqqqqq qqqqqqqqqqqqq qqqqq qqqqqqq qqqq qqqqqq qqqq qqr to the   agmto the agme</p>"},
-                 {content: "<h2 style=\"font-style:italic\">HEllo</h2>\r\n\r\n<p>DEar all matter matteqq qqq qqq qqqqqqq qqqqqqqq qqqqqq qqqqqqqqq qqqq qqq qq qqq qqqqqq qqqq  q qq qqqqqqq  qqqqqqq qqqqqqqq  qqqqqqqq qqqqqqqqqqqqqqq qqqqqqqq qqq qqq qqq qqqqqqqqqqqq qqqqqqqqqqq qqqq qqqqqqqqqqqqqqq qqqqqqq qqqqqqqqqqqqq qqqqqqqqqqqqqqqqqqqqqqqqqqqqr to the agme</p>"},
-                 {content: "<h2 style=\"font-style:italic\">HEllo</h2>\r\n\r\n<p>DEar all matter tqqqqqq qqqq  q qq qqqqqqq  qqqqqqq qqqqqqqq  qqqqqqqq qqqqqqqqqqqqqqq qqqqqqqq qqq qqq qqq qqqqqqqqqqqq qqqqqqqqqqq qqqq qqqqqqqqqqqqqqq qqqqqqq qqqqqqqqqqqqq qqqqq qqqqqqq qqqq qqqqqq qqqq qqr to the agme</p>"},
-               ],
-      eventData:[{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals',id:'1'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals'},{title:'freemax',date:'27-01-2018',time:'2:00AM',venue:'Ovals',}],
+      aboutData:[],
+      eventData:[],
       FprojectsData:[{title:'Linit',description:'its a magazine',gitlink:'#',image:'https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2017/12/Screen-Shot-2017-12-04-at-10.39.57-796x447.png',id:'1'},{title:'Linit',description:'its a magazine',gitlink:'#',image:'https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2017/12/Screen-Shot-2017-12-04-at-10.39.57-796x447.png',id:'1'}]
     }
   },
@@ -115,24 +115,29 @@ export default {
      else this.counter=false;
     },
    scrollLeft(){
-    this.$refs.myDiv.scrollLeft -=30;
+    this.$refs.myDiv.scrollLeft -=250;
     },
   scrollRight(){
-   this.$refs.myDiv.scrollLeft +=30;
+   this.$refs.myDiv.scrollLeft +=250;
   }
 
 
  },
  async mounted() {
    this.changed=true;
-   /*try{ const data = (await Home.getHome()).data  ;
-   this.array = data.displaymesages;
-   this.aboutData = data.aboutUsData;
-   this.eventData = data.Upcomingevents;
-   this.FprojectsData= data.Fprojects;}
+   try{ const data = (await Home.getAbout()).data  ;
+     console.log(data);
+   /*this.array = data.displaymesages;*/
+   this.aboutData = data;
+  /* this.eventData = data.Upcomingevents;
+   this.FprojectsData= data.Fprojects;*/}
    catch(e){
-   this.$router.push({name:'errorPage'});
- }*/
+   console.log('THIS IS THE ERROR',e);
+ };
+   try{ this.eventData = (await Events.getEvents()).data;}
+   catch(e){
+  console.log('THIS IS THE ERROR',e);
+    };
    this.appendWords();
   },
   computed: {
@@ -182,8 +187,7 @@ export default {
 }
 .project {
 	width: 100%;
-	height: inherit;
-	background-image: url(https://image.freepik.com/free-vector/abstract-geometric-background-design_1045-764.jpg);
+	height: 70vh;
 	background-size: cover;
 	background-position: center;
 	padding: 0 !important;
@@ -250,14 +254,14 @@ div.scrollmenu {
     position: relative;
     margin: 0;
     margin-top: 50px;
-    height: 60vh;
+    height: 70vh;
 
 }
 
 .scroller{
-  background-color:#FFF;
+background-color:#FFF;
 min-width: 80%;
-height:60vh;
+height:70vh;
 display: flex;
 overflow-x: auto;
 overflow-y: hidden;
@@ -265,10 +269,10 @@ overflow-y: hidden;
     width: 0px
 }
 
-div.scroller .eachAboutsectionss {
+div.scroller .eachEvent {
   margin: 2px;
-  min-width:250px;
-  height:60vh;
+  width:300px;
+  height:70vh;
 }
 
 .cover{
@@ -348,7 +352,7 @@ g{ display: block;}
   width:250px;
   animation-name: flip;
   animation-duration: 1.5s;
-
+  min-height:400px;
   }
 @keyframes flip {
   from{transform: scale(0.5);}

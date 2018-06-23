@@ -2,8 +2,11 @@ import Api from './Api'
 
 export default {
 
-   getHome(){
-     return Api().get('/')
+   getAbout(){
+     return Api().get('about/')
    },
+   getContacts(){
+     return Api().get('contacts/',)
+   }
 
 }
