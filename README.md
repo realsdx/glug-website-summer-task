@@ -8,8 +8,8 @@ This project aims at developing website for GNU Linux users group using Vue js f
 
 
 ```
-- node v10.0.x
-- npm v5.0.x
+- node
+- npm
 ```
 ## Build Setup
 
