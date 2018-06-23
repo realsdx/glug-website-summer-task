@@ -5,7 +5,7 @@
           <Pageheader/>
           <v-content class="cn">
 
-          <router-view></router-view>
+          <router-view ></router-view>
 
           </v-content>
 
