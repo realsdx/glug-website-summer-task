@@ -28,6 +28,7 @@ export default {
 <style lang="scss">
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 </style>
+
 <style>
 
 
@@ -38,14 +39,14 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
 .headingF{
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  font-size: 35px;
   letter-spacing: -1.6px;
   word-spacing: -1.2px;
   font-weight: 700;
   width:auto;
-  color:#263238;
+  margin-top: 7vh;
 }
 
 </style>
