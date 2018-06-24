@@ -1,5 +1,5 @@
-import Home from '../services/Home'
-import Events from '../services/Events'
+import Home from '@/services/Home'
+import Events from '@/services/Events'
 export default {
   name: 'HelloWorld',
   data () {

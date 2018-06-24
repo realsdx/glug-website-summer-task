@@ -75,9 +75,9 @@
 </div>
 </template>
 
-<script src="./Helloworld.js">
+<script src="../assets/scripts/Helloworld.js">
 </script>
 
 <style scoped lang="css">
-@import './Helloworld.css';
+@import '../assets/css/Helloworld.css';
 </style>

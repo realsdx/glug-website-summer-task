@@ -164,7 +164,7 @@ g{ display: block;}
 .cv{margin-top: 100vh;}
 .bgimage{
       height:100vh;
-      background-image: url("../assets/images/40.jpg");
+      background-image: url("../images/40.jpg");
       top: 0;
       right: 0;
       position: static;

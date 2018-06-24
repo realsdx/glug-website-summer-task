@@ -49,115 +49,11 @@
 
 </template>
 
-<script>
-import Home from '../services/Home'
-export default {
-    data: () => ({
-      valid: true,
-      name: '',
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 15) || 'Name must be less than 15 characters'
-      ],
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
-      ],
-      message: '',
-      messageRules:[
-        v=>!!v||'Please type in a message',
-        v=>(v&&v.length>=10)||'Message must be greater than 10 characters'
-      ],
-     contacts:[{name:'Narendra modi',post:'President',phone:'XXXXXXX',email:'xxx@gmail.com'}]
-    }),
-    methods: {
-      submit () {
-        if (this.$refs.form.validate()) {
-        }
-      },
-      clear () {
-        this.$refs.form.reset()
-      }
-    },
-    async mounted(){
-      try{ this.contacts= (await Home.getContacts()).data;}
-      catch(e){ console.log(e);}
-    }
+<script src='../assets/scripts/contact-us.js'>
 
-}
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 
-
-.contact-info{
-  background-image: url("../assets/images/12.jpg");
-  background-size: cover;
-  min-height:100vh;
-  top: 0;
-  right: 0;
-  position: static;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index:1;
-
-}
-.bleh{
-  animation-name:zomm;
-  animation-duration: 0.5s;
-  animation-delay: 1s;
-
-}
-@keyframes slidein {
-from{ transform:translateX(100%);}
-to{transform: translateX(0);}
-}
-@keyframes zomm {
-0%{transform: scale3d(1,1,1)}
-50%{transform: scale3d(1.1,1.1,1.1);}
-100%{transform: scale3d(1,1,1);
-}
-}
-.contact-form{
-  min-height: 100vh;
-background: rgba(241,231,103,1);
-background: -moz-linear-gradient(left, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(241,231,103,1)), color-stop(100%, rgba(254,182,69,1)));
-background: -webkit-linear-gradient(left, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
-background: -o-linear-gradient(left, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
-background: -ms-linear-gradient(left, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
-background: linear-gradient(to right, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645', GradientType=1 );
-animation-name:slidein;
-animation-duration: 1s;
-}
-.acform{
-margin:0 10vh;
-}
-.inner{
-  top: 0;
-  right: 0;
-  margin: 0;
-  position:static;
-  background-color: rgba(0,0,0,0.5);
-  height: 100%;
-  width:100%;
-  justify-content: center;
-  align-items: center;
-  padding-top: 20vh;
-  color:white;
-  font-size:15px;
-}
-.cardi{
-  margin: 30% auto auto auto;
-  width:80%;
-  border:1px solid white;
-  border-radius: 10px;
-}
-.contact{
-  background: lightblue;
-}
-
+@import '../assets/css/contact-us.css';
 </style>

@@ -45,63 +45,10 @@ right
 </div>
 </template>
 
-<script>
-export default {
-  name:'Pageheader',
-  data(){
-    return {
-      drawer: null,
-      isActive:true,
-      items: [
-       'All', 'Family', 'Friends', 'Coworkers'
-     ]
-    }
-  },
-  methods:{
-      navigateTo(routes){
-      if(this.$route.name===routes.name) location.reload();
-       else  this.$router.push(routes)
-    },
-    onScroll (e) {
-        var count= window.pageYOffset || document.documentElement.scrollTop
-        if(count>300)
-        { this.isActive = false;}
-        else this.isActive = true;
-      }
-  }
-}
+<script src='../assets/scripts/Header'>
+
 </script>
 
 <style lang="css">
-.home{
-  cursor: pointer;
-}
-.home:hover{
-  color:grey;
-}
-.navigater{
-  opacity: 0.8;
-  top:0;
-  right:0;
-  position: relative;
-}
-.logo{
-  height: 60px;
-  border:1px solid black;
-  overflow: visible;
-  background-color: white;
-  margin-top: 15px;
-  width:60px;
-}
-.logo:hover{
-  transform:rotateX(100);
-}
-.linked:hover{
-  text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #00ffff , 0 0 70px #00ffff , 0 0 80px #00ffff , 0 0 100px #00ffff ;
-}
-
-.icons{
-padding-top: 20px;
-color:white;
-}
+@import '../assets/css/Header.css';
 </style>
