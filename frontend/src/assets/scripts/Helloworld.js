@@ -5,6 +5,7 @@ export default {
   data () {
     return {
       slider:100,
+      dialog: false,
       tile: false,
       array:['GNU linux users group welcomes you','psychological-biographical comedy-drama','Random text'],
       string:'Welcome to Marwen is an upcoming American ',
@@ -35,6 +36,14 @@ export default {
      this.counter= true;
      else this.counter=false;
     },
+
+    toggle: function (subject) {
+    if(this.dialog == subject) {
+        this.dialog = false;
+    } else {
+        this.dialog = subject;
+    }
+}
 
  },
 async created(){

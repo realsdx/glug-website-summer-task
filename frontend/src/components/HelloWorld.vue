@@ -29,7 +29,7 @@
 <div id="eventsSection" class="container fluid" >
    <v-flex class="white--text"><h1 class="headingF display-2">Upcoming Events</h1></v-flex>
     <div class="scroller d-flex" ref="myDiv">
-      <div class="eachEvent" v-for="data in eventData" v-show="counter" v-scroll="hellyeah" v-if="(new Date(data.event_timing)>new Date())">
+      <div class="eachEvent" v-for="data in eventData" v-if="(new Date(data.event_timing)>new Date())">
           <div class=" project project-2" :style="{ backgroundImage: `url('${data.event_image}')` }">
             	   <div class="project-hover">
                 	<h2>{{data.title}}</h2>
@@ -38,7 +38,16 @@
                       <v-icon color="white">date_range</v-icon>{{new Date(data.event_timing).toLocaleDateString()}}</p>
                       <div v-show="data.venue">Venue:{{data.venue}}</div>
                       <div v-show="data.url">Visit:{{data.url}}</div>
-                       <a href="#">See Project</a>
+                       <v-btn  @click="toggle(data.identifier)">What is it?</v-btn>
+                       <v-dialog v-model="dialog===data.identifier" max-width=300>
+                          <v-card>
+                            <v-card-title class="headingF red--text">{{data.title}}</v-card-title>
+                              <hr>
+                              <v-card-text v-html="data.description"></v-card-text>
+                              <hr>
+                              <button @click="toggle(data.identifier)" class="btn btn-outline-dark">ok</button>
+                          </v-card>
+                      </v-dialog>
                 </div>
                </div>
       </div>
