@@ -14,9 +14,9 @@
        <p v-html="data.description"></p>
        <div v-show="data.venue">Venue:{{data.venue}}</div>
        <div v-show="data.url">Visit:{{data.url}}</div>
-       <div ><social-sharing :url="data.url||$route.path"
+       <div class="iconwrap"><social-sharing :url="data.url||$route.path"
                      :title="data.title"
-                     :description="data.description"
+                      :description="data.description"
                      :quote="data.title"
                      inline-template>
  <div class="d-flex justify-content-center align-items-center fa-lg icons">

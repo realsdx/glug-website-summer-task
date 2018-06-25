@@ -6,8 +6,8 @@ export default {
     return {
       slider:100,
       tile: false,
-      array:['GNU linux users group welcomes you','Hey there','Random text'],
-      string:'Wanna be Badass',
+      array:['GNU linux users group welcomes you','psychological-biographical comedy-drama','Random text'],
+      string:'Welcome to Marwen is an upcoming American ',
       changed:false,
       counter:false,
       duration: 300,
@@ -28,54 +28,49 @@ export default {
        this.changed=!this.changed;
      if(i== ary.length) i=0;
    }, 2000)
- },
+   },
     hellyeah(e) {
      var count= window.pageYOffset || document.documentElement.scrollTop
      if(count>10)
-    this.counter= true;
+     this.counter= true;
      else this.counter=false;
     },
-   scrollLeft(){
-    this.$refs.myDiv.scrollLeft -=250;
-    },
-  scrollRight(){
-   this.$refs.myDiv.scrollLeft +=250;
-  }
-
 
  },
- async mounted() {
-   this.changed=true;
+async created(){
    try{ const data = (await Home.getAbout()).data  ;
-     console.log(data);
-   /*this.array = data.displaymesages;*/
    this.aboutData = data;
-  /* this.eventData = data.Upcomingevents;
-   this.FprojectsData= data.Fprojects;*/}
+   //this.FprojectsData= data.Fprojects;
+       }
    catch(e){
-   console.log('THIS IS THE ERROR',e);
- };
+   console.log('THIS IS THE ERROR',e.message);
+       };
    try{ this.eventData = (await Events.getEvents()).data;}
    catch(e){
-  console.log('THIS IS THE ERROR',e);
-    };
+        console.log('THIS IS THE ERROR',e.message);
+    }
+
+ },
+ mounted() {
+   this.changed=true;
    this.appendWords();
   },
-  computed: {
+
+computed: {
       avatarSize () {
         return `${this.slider}px`
       },
-    target () {
+      target () {
       const value = '#aboutSection'
       if (!isNaN(value)) return Number(value)
       else return value
-    },
-    options () {
+                },
+      options () {
       return {
         duration: this.duration,
         offset: this.offset,
         easing: this.easing
       }
-    },
+     },
     }
 };

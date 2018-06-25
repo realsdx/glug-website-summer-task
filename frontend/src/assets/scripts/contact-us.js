@@ -28,9 +28,9 @@ export default {
         this.$refs.form.reset()
       }
     },
-    async mounted(){
+    async created(){
       try{ this.contacts= (await Home.getContacts()).data;}
-      catch(e){ console.log(e);}
+      catch(e){ console.log(e.message);}
     }
 
 }

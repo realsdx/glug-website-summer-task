@@ -2,15 +2,22 @@
   <div class="mems container fluid">
   <div style="margin-top:10vh">
   <h1 class="headingF display-2">Our Team</h1></div>
-  <div style="text-align:left;margin:10px;">
-    <ul v-for="Eachyear in Allyears">
-      <li><strong>{{Eachyear.name}}</strong></li>
-      <ol>
-        <li v-for="member in Eachyear.members">{{member}}</li>
-      </ol>
-
-    </ul>
-
+  <div >
+    <div v-for="Eachyear in Allyears" v-if="Eachyear.members.length" >
+      <h2 class="headingF">{{Eachyear.name}}</h2>
+       <div class="d-flex flex-wrap" >
+        <div v-for="member in Eachyear.members">
+          <div class=" member" :style="{ backgroundImage: `url('${member.image}')` }">
+                 <div class="member-hover">
+                    <a :href="member.facebook_link"><i class="fab fa-lg fa-facebook-square"></i></a>
+                    <a :href="member.email"><i class="fa-lg fas fa-envelope"></i> </a>
+                    <a :href="member.git_link"><i class="fab fa-lg fa-github-square"></i></a>
+                </div>
+                <h5>{{member.first_name + ' '+member.last_name}}</h5>
+               </div>
+           </div>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -20,9 +27,5 @@
 </script>
 
 <style lang="css">
-.mems{
-  min-height: 100vh;
-  background-color: rgba(11, 49, 243,0.2);
-}
-
+@import '../assets/css/members.css'
 </style>

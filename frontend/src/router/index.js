@@ -4,7 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import DisplayEvents from '@/components/DisplayEvents'
 import Members from '@/components/Members'
 import contactus from '@/components/contact-us'
-
+import PageNotFound from '@/components/PageNotFound'
 Vue.use(Router)
 
 
@@ -29,8 +29,13 @@ export default new Router({
       path:'/contact-us',
       name:'contact-us',
       component:contactus
-    }
-
+    },
+     { path: "/*",
+       name:'errorPage',
+      component: PageNotFound }
   ],
-  mode: 'history'
+  mode: 'history',
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
 })

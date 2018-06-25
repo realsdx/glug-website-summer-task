@@ -4,15 +4,13 @@ export default {
     return {
       drawer: null,
       isActive:true,
-      items: [
-       'All', 'Family', 'Friends', 'Coworkers'
-     ]
     }
   },
   methods:{
       navigateTo(routes){
       if(this.$route.name===routes.name) location.reload();
-       else  this.$router.push(routes)
+       else  {this.$router.push(routes);
+              window.pageYOffset=0;}
     },
     onScroll (e) {
         var count= window.pageYOffset || document.documentElement.scrollTop
