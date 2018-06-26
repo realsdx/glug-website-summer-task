@@ -4,9 +4,9 @@
         <main>
 
             <Pageheader/>
-            <v-content><div id="particles">
+            <v-content>
             <router-view ></router-view>
-            </div></v-content>
+            </v-content>
             <Pagefooter/>
       </main>
   </v-app>
