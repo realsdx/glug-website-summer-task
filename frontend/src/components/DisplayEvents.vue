@@ -1,50 +1,50 @@
 <template lang="html">
-<div class="events container fluid">
-<div class="project-hover" style="margin-top:10vh">
-<h1 class="headingF display-2">Events</h1></div>
+<v-container fluid class="events">
+<div style="margin-top:10vh;margin-bottom:1vh">
+<v-flex><span class="headingF display-2">Events</span></v-flex></div>
+<hr><br>
 <hr>
-<hr>
-<div class="cards d-flex flex-wrap">
-  <div class="Eachcard" v-for="data in events">
+<v-layout d-flex wrap justify-space-around class="cards">
+   <v-flex lg3 sm12 class="Eachcard" v-for="data in events" :key="data.identifier" v-if="data.show_bool">
+      <v-container><img :src="data.event_image" class="cardImage"/>
+      <v-layout d-flex><v-flex xs10><h2 >{{data.title}}</h2></v-flex>
+                        <v-flex xs2>
+                          <v-menu top offest-y>
+                            <v-btn slot="activator" icon outline dark style="color:#12202E" ripple><i class="fas fa-share-alt"></i></v-btn>
+                            <v-list fluid  align-content-end>
+                            <social-sharing :url="data.url||$route.path"
+                                          :title="data.title"
+                                           :description="data.description"
+                                          :quote="data.title"
+                                          inline-template>
 
-      <img :src="data.event_image" class="cardImage"/>
-      <h3 >{{data.title}}</h3>
-      <div id="ribbon" ><i class="far fa-calendar-alt fa-lg" ></i><span >{{new Date(data.event_timing).toLocaleDateString()}}</span></div>
-      <div id="ribbon"><i class="fas fa-clock fa-lg"></i><span>{{new Date(data.event_timing).toLocaleTimeString()}}</span></div>
+                             <v-list>
+                              <v-list-tile><network network="facebook"><v-btn icon><i class="fab fa-lg fa-facebook-f"></i></v-btn></network></v-list-tile>
+                             <v-list-tile><network network="twitter"><v-btn icon><i class="fab fa-lg fa-twitter" ></i></v-btn></network></v-list-tile>
+                             <v-list-tile><network network="whatsapp"><v-btn icon><i class="fab fa-lg fa-whatsapp"></i></v-btn></network></v-list-tile>
+                           </v-list>
+                            </social-sharing>
+                          </v-list>
+                        </v-menu>
+                        </v-flex>
+      </v-layout> </v-container>
+      <div id="ribbon" ><i class="far fa-calendar-alt fa-lg" ></i> <span > {{new Date(data.event_timing).toLocaleDateString()}}</span></div>
+      <div id="ribbon"><i class="fas fa-clock fa-lg"></i> <span> {{new Date(data.event_timing).toLocaleTimeString()}}</span></div>
+      <div v-show="data.venue"><strong>Venue:</strong><u>{{data.venue}}</u></div>
+      <div v-show="data.url"><strong>Visit:</strong><u>{{data.url}}</u></div>
        <p v-html="data.description"></p>
-       <div v-show="data.venue">Venue:{{data.venue}}</div>
-       <div v-show="data.url">Visit:{{data.url}}</div>
-       <div class="iconwrap"><social-sharing :url="data.url||$route.path"
-                     :title="data.title"
-                      :description="data.description"
-                     :quote="data.title"
-                     inline-template>
- <div class="d-flex justify-content-center align-items-center fa-lg icons">
 
-     <network network="facebook">
-         <i class="fab fa-facebook-f" style="color:#3B5998"></i>
-     </network>
-     <network network="twitter">
-        <i class="fab fa-twitter" style="color:#1DA1F2"></i>
-     </network>
-     <network network="whatsapp">
-        <i class="fab fa-whatsapp" style="color:green"></i>
-     </network>
- </div>
-</social-sharing>
-       </div>
-      </div>
 
-</div>
-</div>
-</div>
-</div>
+    </v-flex>
+  </v-layout>
+
+</v-container>
 </template>
 
 <script src="../assets/scripts/DisplayEvents.js">
 
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 @import '../assets/css/DisplayEvents.css';
 </style>

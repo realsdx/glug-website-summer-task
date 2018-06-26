@@ -1,16 +1,13 @@
 <template>
   <div id="app"   >
-    <v-app  >
+    <v-app >
         <main>
-          <Pageheader/>
-          <v-content class="cn">
 
-          <router-view ></router-view>
-
-          </v-content>
-
-          <Pagefooter/>
-
+            <Pageheader/>
+            <v-content><div id="particles">
+            <router-view ></router-view>
+            </div></v-content>
+            <Pagefooter/>
       </main>
   </v-app>
 </div>
@@ -20,14 +17,12 @@
 
 import Pageheader from './components/Header'
 import Pagefooter from './components/Footer'
+import particles from './components/particles'
 export default {
   name: 'App',
-  components:{ Pageheader,Pagefooter},
+  components:{ Pageheader,Pagefooter,particles},
 }
 </script>
-<style lang="scss">
-@import '../node_modules/bootstrap/scss/bootstrap.scss';
-</style>
 
 <style>
 
@@ -37,7 +32,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  background-color:#A3CBC8;
+
 }
 
 .headingF{
@@ -47,6 +43,7 @@ export default {
   font-weight: 700;
   width:auto;
   margin-top: 7vh;
+  color:#12202E;
 }
 
 </style>

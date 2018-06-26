@@ -13,7 +13,7 @@ Vue.use(SocialSharing);
 
 sync(store,router)
 // index.js or main.js
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
+
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)

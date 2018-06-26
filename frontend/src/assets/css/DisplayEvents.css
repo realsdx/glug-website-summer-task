@@ -1,7 +1,4 @@
-.events{
-  min-height: 100vh;
-  background-color: rgba(11, 49, 243,0.2);
-}
+
 
 hr{
   height: 2px;
@@ -15,17 +12,16 @@ hr{
   animation-duration: 2s;
 }
 @keyframes inc {
- 0%{ width: 0;height:20px;}
+ 0%{ width: 0;height:10px;}
  100%{width:100%;}
 }
 .Eachcard{
-  height:auto;
-  background-color:white;
-  max-width: 400px;
+  background-color: #F2F4F6;
   -webkit-box-shadow: -3px 16px 15px 2px #01181D;
   box-shadow: -3px 16px 15px 2px #01181D;
   border-radius:10px;
   margin: 20px;
+  width:100%;
 }
 .Eachcard p{
   padding: 1rem;
@@ -38,8 +34,11 @@ hr{
   border-top-right-radius: inherit;
   border-top-left-radius:inherit;
 }
+.iconwrap{
+  background-color: white;
+}
 #ribbon{
-  background: #263238;
+  background: #12202E;
   position: relative;
   width:70%;
   margin-bottom: 2px;
@@ -51,14 +50,14 @@ hr{
 #ribbon:after{
   content:'';
   height:0;
-    color:transparent;
+  color:transparent;
   width: 0;
   top:0px;
   right:-20px;
   position: absolute;
   border-left:22px   solid transparent;
   border-right: 22px solid transparent;
-  border-bottom: 21px solid  #263238;
+  border-bottom: 21px solid  #12202E;
 }
 
 #ribbon:before{
@@ -72,7 +71,7 @@ hr{
   border-style: solid;
   border-left: 22px solid transparent;
   border-right: 22px solid transparent;
-  border-top: 21px solid  #263238;
+  border-top: 21px solid  #12202E;
 }
 .icons{
   margin: 0px 10px 0px;

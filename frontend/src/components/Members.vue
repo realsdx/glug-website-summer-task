@@ -1,11 +1,11 @@
 <template lang="html">
-  <div class="mems container fluid">
+  <div class="mems">
   <div style="margin-top:10vh">
   <h1 class="headingF display-2">Our Team</h1></div>
   <div >
-    <div v-for="Eachyear in Allyears" v-if="Eachyear.members.length" >
-      <h2 class="headingF">{{Eachyear.name}}</h2>
-       <div class="d-flex flex-wrap" >
+    <div v-for="Eachyear in Allyears" v-if="Eachyear.members.length" class="eachyearcard">
+      <v-layout justify-center><h2 class="headingF eachyear">{{Eachyear.name}}</h2></v-layout>
+       <v-layout d-flex wrap >
         <div v-for="member in Eachyear.members">
           <div class=" member" :style="{ backgroundImage: `url('${member.image}')` }">
                  <div class="member-hover">
@@ -16,16 +16,15 @@
                 <h5>{{member.first_name + ' '+member.last_name}}</h5>
                </div>
            </div>
-      </div>
+      </v-layout>
     </div>
   </div>
-
 </div>
 </template>
 
 <script src='../assets/scripts/Members.js'>
 </script>
 
-<style lang="css">
-@import '../assets/css/members.css'
+<style lang="css" scoped>
+@import '../assets/css/members.css';
 </style>

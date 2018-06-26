@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="contact d-flex flex-wrap justify-content-center">
-    <div class="contact-form  col-lg-6 col-sm-12">
+  <v-layout d-flex wrap class="contact">
+    <v-flex xs12 lg6 class="contact-form">
       <div class="images" style="margin-top:70px;">
         <img src="../assets/images/icon(1).png" alt="" style="height:20vh" >
       </div>
@@ -34,8 +34,8 @@
        </v-btn>
        <v-btn @click="clear"><i class="fas fa-lg fa-broom"></i>clear</v-btn>
      </v-form>
-   </div>
-    <div class="contact-info col-lg-6 col-sm-12">
+   </v-flex>
+    <v-flex xs12 lg6 class="contact-info">
       <div class="inner">
         <div v-for="contact in contacts" class="cardi">
           <i class="far fa-address-card fa-lg"></i><span> {{contact.name}}</span >({{contact.post}})<br>
@@ -43,9 +43,9 @@
         </div>
 
     </div>
-    </div>
+  </v-flex>
 
-  </div>
+</v-layout>
 
 </template>
 

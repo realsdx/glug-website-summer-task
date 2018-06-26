@@ -1,16 +1,16 @@
-.mems{
-  min-height: 100vh;
-  background-color: rgba(11, 49, 243,0.2);
-}
+
 .member {
-	width: 10rem;
+	width:10rem;
 	height:10rem;
 	background-size: cover;
 	background-position: center;
 	padding: 0 !important;
   padding-bottom:1.5rem !important;
   border:0.1rem solid black;
-  margin:0.07rem;
+  margin:0.09rem;
+  animation-name: incl;
+  animation-duration: 1s;
+
 }
 .member h5{
   background-color: white;
@@ -29,4 +29,22 @@
 }
 .member:hover .member-hover {
 	opacity: 1;
+}
+.eachyear{
+  background-color: white;
+  width:80%;
+  margin: 2rem 0 ;
+  animation-name: inc;
+  animation-duration: 1s;
+}
+@keyframes inc {
+ 0%{ transform: translateX(100%);}
+ 100%{ transform: translateX(0);}
+}
+@keyframes incl {
+ 0%{ transform: translateX(-100%);}
+ 100%{ transform: translateX(0);}
+}
+.eachyearcard{
+	margin: 1rem;
 }
