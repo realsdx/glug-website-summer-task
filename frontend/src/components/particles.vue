@@ -54,25 +54,25 @@ export default {
             }
           },
           'size': {
-            'value': 10,
+            'value': 3,
             'random': true,
             'anim': {
               'enable': false,
-              'speed': 80,
+              'speed': 40,
               'size_min': 0.1,
               'sync': false
             }
           },
           'line_linked': {
-            'enable': true,
-            'distance': 300,
-            'color': '#ffffff',
-            'opacity': 0.4,
-            'width': 2
+            "enable": true,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
           },
           'move': {
             'enable': true,
-            'speed': 12,
+            'speed': 6,
             'direction': 'none',
             'random': false,
             'straight': false,
@@ -100,14 +100,14 @@ export default {
           },
           'modes': {
             'grab': {
-              'distance': 800,
+              'distance': 200,
               'line_linked': {
                 'opacity': 1
               }
             },
             'bubble': {
-              'distance': 800,
-              'size': 80,
+              'distance': 400,
+              'size': 40,
               'duration': 2,
               'opacity': 0.8,
               'speed': 3
@@ -133,9 +133,18 @@ export default {
 </script>
 
 <style>
-#particles-js {
-width: 100%;
-height: 100%;
-background: cornflowerblue;
+/* #particles-js {
+  position: absolute !important;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #b61924 !important;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
 }
+canvas {
+  display: block;
+} */
 </style>

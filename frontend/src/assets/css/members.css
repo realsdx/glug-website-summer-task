@@ -1,4 +1,9 @@
 
+.particle-body {
+	overflow: hidden;
+	z-index: 1;
+}
+
 .member {
 	width:10rem;
 	height:10rem;

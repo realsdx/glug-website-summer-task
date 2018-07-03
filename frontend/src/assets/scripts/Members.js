@@ -1,5 +1,10 @@
 import Members from '@/services/members.js'
+import ParticlesJS from '../../components/particles'
+
+  
 export default {
+  name: 'Members',
+  components: { ParticlesJS },
   data(){
     return{
       Allyears:[{name:'Final year',members:[]},

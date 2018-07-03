@@ -7,6 +7,7 @@
             <v-content>
             <router-view ></router-view>
             </v-content>
+        
             <Pagefooter/>
       </main>
   </v-app>
@@ -17,10 +18,11 @@
 
 import Pageheader from './components/Header'
 import Pagefooter from './components/Footer'
-import particles from './components/particles'
+// import particles from './components/particles'
+import ParticlesJS from './components/particles'
 export default {
   name: 'App',
-  components:{ Pageheader,Pagefooter,particles},
+  components:{ Pageheader,Pagefooter,ParticlesJS },
 }
 </script>
 
