@@ -37,8 +37,8 @@
   position: absolute !important;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  background-color: #b61924 !important;
+  /* z-index: -1; */
+  background-color: #000000 !important;
   background-image: url("");
   background-repeat: no-repeat;
   background-size: cover;
