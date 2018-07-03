@@ -3,10 +3,10 @@ import Api from './Api'
 export default {
 
    getAbout(){
-     return Api().get('about/')
+     return Api().get('api/about/')
    },
    getContacts(){
-     return Api().get('contacts/',)
+     return Api().get('api/contacts/',)
    }
 
 }

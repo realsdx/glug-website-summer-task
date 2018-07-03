@@ -3,7 +3,7 @@ import Api from './Api'
 export default {
 
    getEvents(){
-     return Api().get('events/')
+     return Api().get('api/events/')
    },
 
 }

@@ -1,6 +1,6 @@
 <template lang="html"><div>
   <v-flex  v-bind:class="{ navigater:this.$route.path=='/'&&isActive}" v-scroll="onScroll" >
-    <v-toolbar style="background-color:#12202E" dark fixed>
+    <v-toolbar style="background-color:#12202E" dark fixed flat>
    <v-toolbar-title><v-avatar class="logo" @click="navigateTo({name:'root'})"><img src="../assets/images/logo.png" alt=""/></v-avatar></v-toolbar-title>
    <v-spacer></v-spacer>
    <v-toolbar-items class="hidden-sm-and-down">
@@ -16,7 +16,7 @@
       <v-btn medium class="linked" flat  >
        Activities
        </v-btn>
-       <v-btn  medium class="linked" flat   >
+       <v-btn  medium class="linked" flat  @click="navigateTo({name:'blog'})" >
         Blog
       </v-btn>
       <v-btn medium class="linked" flat  @click="navigateTo({name:'contact-us'})" >
@@ -39,7 +39,7 @@ right
 <v-flex><span @click="navigateTo({name:'DisplayEvents'})" class=" linked fa-2x"><i class="fas icons fa-dice"></i></span></v-flex><br>
 <v-flex><span @click="navigateTo({name:'Members'})" class=" linked fa-2x"><i class="fas icons fa-users"></i></span></v-flex><br>
 <v-flex><span  class=" linked fa-2x"><i class="fas icons fa-briefcase"></i></span></v-flex><br>
-<v-flex><span class=" linked fa-2x"><i class="icons fab fa-blogger-b"></i></span></v-flex><br>
+<v-flex><span class=" linked fa-2x" @click="navigateTo({name:'blog'})"><i class="icons fab fa-blogger-b"></i></span></v-flex><br>
 <v-flex><span @click="navigateTo({name:'contact-us'})" class=" linked fa-2x"><i class="fas icons fa-phone"></i></span></v-flex><br>
 </v-layout>
 </v-navigation-drawer>

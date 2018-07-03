@@ -8,6 +8,7 @@ import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
 import {sync} from 'vuex-router-sync'
 var SocialSharing = require('vue-social-sharing');
+import _ from 'lodash'
 
 Vue.use(SocialSharing);
 

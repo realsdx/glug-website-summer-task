@@ -26,7 +26,7 @@
 
 <v-container fluid id="eventsSection">
    <v-flex class="white--text"><h1 class="headingF display-2">Upcoming Events</h1></v-flex>
-    <v-layout class="scroller d-flex" ref="myDiv" fill-height>
+    <v-layout class="scroller" ref="myDiv" fill-height>
       <v-flex class="eachEvent" v-for="data in eventData" v-if="(new Date(data.event_timing)>new Date())"  :key="data.identifier">
           <div  class="project" :style="{ backgroundImage: `url('${data.event_image}')` }">
             	   <div class="project-hover">

@@ -1,0 +1,65 @@
+
+@import 'https://fonts.googleapis.com/css?family=Audiowide|Iceland|Monoton|Pacifico|Press+Start+2P|Vampiro+One';
+
+
+#myInput {
+    background-image: url('../images/search.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 1.8rem;
+    width: 100%;
+    padding: 0.5rem;
+    padding-left: 3rem;
+    border: 1px solid #ddd;
+    color:white;
+}
+.input-group.input-group--solo{
+  border: 1px solid #ddd;
+  min-height:2rem !important;
+  max-height:2.65rem !important;
+
+}
+.Blog{
+  position: relative;
+  background-color:#12202E;
+  min-height:100vh
+}
+
+.container {
+
+  text-align: center;
+}
+
+.neon {
+  margin-top: 10vh;
+  font-family: Iceland;
+  color: white;
+  font-size: 5rem;
+  text-shadow: 0 0 50px #fff, 0 0 100px #fff, 0 0 105px #fff, 0 0 200px #228DFF;
+
+}
+.blogHead{
+  font-family: Iceland;
+  color: white;
+  font-size: 2rem;
+}
+.neon {
+  animation: neon 0.3s ease ;
+  animation-iteration-count: 5 ;
+  -moz-animation: neon 0.3s ease 5 ;
+  -webkit-animation: neon 0.3s ease 5 ;
+}
+
+@keyframes neon {
+  0%,
+  50%,10%,20%,60% ,70%,90%{
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF;
+    color: white;
+  }
+  15%,25%,55%,75%,85%,95%,100%{
+      opacity:0;
+  }
+}
+.Recentposts{
+  padding:1rem;
+}
